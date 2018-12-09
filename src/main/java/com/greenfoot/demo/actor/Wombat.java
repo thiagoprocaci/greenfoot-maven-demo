@@ -23,15 +23,19 @@ public class Wombat extends Actor
      */
     public void act()
     {
+        if (Greenfoot.getRandomNumber(100) < 10) {
+            setDirection(Greenfoot.getRandomNumber(4));
+        }
+
         if (foundLeaf()) {
             eatLeaf();
         }
         else if (canMove()) {
             move();
+        } else {
+            setDirection(Greenfoot.getRandomNumber(4));
         }
-        else {
-            turnLeft();
-        }
+
     }
 
     /**
