@@ -1,5 +1,6 @@
 package com.greenfoot.demo.world;
 
+import com.greenfoot.demo.actor.House;
 import com.greenfoot.demo.actor.Leaf;
 import com.greenfoot.demo.actor.Wombat;
 import greenfoot.*;  // imports Actor, World, Greenfoot, GreenfootImage
@@ -33,6 +34,8 @@ public class WombatWorld extends World
         addObject(new Wombat(), 6, 6);
         addObject(new Wombat(), 1, 7);
         randomLeaves(20);
+
+      //  addObject(new House(), Greenfoot.getRandomNumber(getWidth()), Greenfoot.getRandomNumber(getHeight()));
     }
     
     /**
