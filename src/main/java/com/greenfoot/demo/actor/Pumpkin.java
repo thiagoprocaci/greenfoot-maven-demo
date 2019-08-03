@@ -10,11 +10,7 @@ public class Pumpkin extends Actor {
     }
 
     public void act() {
-        if(isTouching(Wombat.class)) {
-            removeTouching(Wombat.class);
-            getWorld().showText("Wombat caiu na armadilha", 3, 1);
-            Greenfoot.stop();
-        }
+
     }
 
 }

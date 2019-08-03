@@ -13,8 +13,7 @@ public class Wombat extends Actor
 {
     private int leavesEaten;
     String currentImage = "wombat.png";
-    int timeCount = 0;
-    boolean lobster = false;
+
 
     public Wombat()
     {
@@ -39,9 +38,6 @@ public class Wombat extends Actor
             setDirection(Greenfoot.getRandomNumber(4));
         }
 
-        handleImage();
-        eatCrab();
-        checkTotalLeadEaten();
     }
 
     /**
@@ -78,45 +74,16 @@ public class Wombat extends Actor
     {
         Leaf leaf = (Leaf) getOneObjectAtOffset(0, 0, Leaf.class);
         if (leaf != null) {
-            if(leaf.isBrown()) {
-                currentImage = "lobster.png";
-            }
+
             // eat the leaf...
             getWorld().removeObject(leaf);
             leavesEaten = leavesEaten + 1; 
         }
     }
 
-    public void handleImage() {
-        if(currentImage == "lobster.png") {
-            lobster = true;
-            timeCount = timeCount + 1;
-            if(timeCount > 50) {
-                currentImage = "wombat.png";
-                timeCount = 0;
-            }
-        } else {
-            lobster = false;
-        }
-        setImage(currentImage);
-    }
 
 
-    public void eatCrab() {
-        Crab crab = (Crab) getOneIntersectingObject(Crab.class);
-        if(crab != null && lobster && !crab.isInvencible()) {
-            removeTouching(Crab.class);
-            getWorld().showText("Lobster encontrou o Crab", 3, 1);
-            Greenfoot.stop();
-        }
-    }
 
-    public void checkTotalLeadEaten() {
-        if(leavesEaten >= 15) {
-            getWorld().showText("Wombat comeu 15 folhas", 3, 1);
-            Greenfoot.stop();
-        }
-    }
     /**
      * Set the direction we're facing. The 'direction' parameter must
      * be in the range [0..3].
