@@ -53,4 +53,5 @@ public class WombatWorld extends World
             addObject(leaf, x, y);
         }
     }
+
 }
