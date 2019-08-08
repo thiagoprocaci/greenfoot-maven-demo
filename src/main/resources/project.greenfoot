@@ -1,5 +1,5 @@
 #Greenfoot project file
-class.com.greenfoot.demo.actor.Cat.image=cat.png
+class.com.greenfoot.demo.Cat.image=cat.png
 dependency1.from=CatWorld
 dependency1.to=MyCat
 dependency1.type=UsesDependency
