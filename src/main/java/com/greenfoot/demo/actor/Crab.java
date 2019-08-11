@@ -1,9 +1,8 @@
 package com.greenfoot.demo.actor;
 
-import greenfoot.Actor;
-import greenfoot.Greenfoot;
 
-public class Crab extends Actor {
+
+public class Crab extends Guest {
 
     boolean invencible = false;
 
@@ -24,11 +23,5 @@ public class Crab extends Actor {
         return invencible;
     }
 
-    public void makeInvisible() {
-        getImage().setTransparency(0);
-    }
 
-    public void makeVisible() {
-        getImage().setTransparency(255);
-    }
 }

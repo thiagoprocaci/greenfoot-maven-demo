@@ -1,9 +1,6 @@
 package com.greenfoot.demo.world;
 
-import com.greenfoot.demo.actor.Crab;
-import com.greenfoot.demo.actor.House;
-import com.greenfoot.demo.actor.Leaf;
-import com.greenfoot.demo.actor.Wombat;
+import com.greenfoot.demo.actor.*;
 import greenfoot.*;  // imports Actor, World, Greenfoot, GreenfootImage
 
 /**
@@ -31,13 +28,13 @@ public class WombatWorld extends World
      */    
     public void populate()
     {
-        addObject(new Wombat(), 7, 1);
-        //addObject(new Wombat(), 6, 6);
-        //addObject(new Wombat(), 1, 7);
+        for(int i = 0; i < 8; i++) {
+            addObject(new Wombat(), Greenfoot.getRandomNumber(getWidth() - 2) + 3, Greenfoot.getRandomNumber(getHeight() - 2) + 3);
+        }
         randomLeaves(20);
-
-        addObject(new House(), Greenfoot.getRandomNumber(getWidth()), Greenfoot.getRandomNumber(getHeight()));
-        addObject(new Crab(), Greenfoot.getRandomNumber(getWidth()), Greenfoot.getRandomNumber(getHeight()));
+        addObject(new House(), Greenfoot.getRandomNumber(getWidth() - 2) + 3, Greenfoot.getRandomNumber(getHeight() - 2) + 3);
+        addObject(new Bricklayer(), Greenfoot.getRandomNumber(getWidth() - 2) + 3, Greenfoot.getRandomNumber(getHeight() - 2) + 3);
+ //       addObject(new Crab(), Greenfoot.getRandomNumber(getWidth()), Greenfoot.getRandomNumber(getHeight()));
     }
     
     /**

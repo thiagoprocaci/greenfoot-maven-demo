@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, and Greenfoot)
  * @author Michael Kölling
  * @version 2.0
  */
-public class Wombat extends Actor
+public class Wombat extends Guest
 {
     private int leavesEaten;
     String currentImage = "wombat.png";
@@ -26,17 +26,20 @@ public class Wombat extends Actor
      */
     public void act()
     {
-        if (Greenfoot.getRandomNumber(100) < 10) {
-            setDirection(Greenfoot.getRandomNumber(4));
+        if(!isInTheHouse()) {
+            if (Greenfoot.getRandomNumber(100) < 10) {
+                setDirection(Greenfoot.getRandomNumber(4));
+            }
+            if (foundLeaf()) {
+                eatLeaf();
+            }
+            else if (canMove()) {
+                move();
+            } else {
+                setDirection(Greenfoot.getRandomNumber(4));
+            }
         }
-        if (foundLeaf()) {
-            eatLeaf();
-        }
-        else if (canMove()) {
-            move();
-        } else {
-            setDirection(Greenfoot.getRandomNumber(4));
-        }
+
 
     }
 
