@@ -34,7 +34,10 @@ public class WombatWorld extends World
         randomLeaves(20);
         addObject(new House(), Greenfoot.getRandomNumber(getWidth() - 2) + 3, Greenfoot.getRandomNumber(getHeight() - 2) + 3);
         addObject(new Bricklayer(), Greenfoot.getRandomNumber(getWidth() - 2) + 3, Greenfoot.getRandomNumber(getHeight() - 2) + 3);
- //       addObject(new Crab(), Greenfoot.getRandomNumber(getWidth()), Greenfoot.getRandomNumber(getHeight()));
+
+        for(int i = 0; i < 3; i++) {
+            addObject(new Crab(), Greenfoot.getRandomNumber(getWidth() - 2) + 3, Greenfoot.getRandomNumber(getHeight() - 2) + 3);
+        }
     }
     
     /**

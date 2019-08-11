@@ -16,7 +16,10 @@ public class House extends Actor {
 
     public void act() {
         if(isTouching(Bricklayer.class)) {
-            visitors = Greenfoot.getRandomNumber(10);
+            int number = Greenfoot.getRandomNumber(10);
+            if(number > guestList.size()) {
+                visitors = number;
+            }
         }
 
         Guest guest = (Guest) getOneIntersectingObject(Guest.class);
@@ -33,8 +36,22 @@ public class House extends Actor {
             removedGuest.setInTheHouse(false);
             removedGuest.makeVisible();
         }
+
+        int quantCrab = 0;
+        int quantWombat = 0;
+        for(Guest g : guestList) {
+            if(g instanceof  Crab) {
+                quantCrab++;
+            }
+            if(g instanceof  Wombat) {
+                quantWombat++;
+            }
+        }
+
         getWorld().showText( "Capacidade total da casa: " + visitors, 4, 0);
         getWorld().showText(guestList.size() + " visitantes na casa.", 2, 1);
+        getWorld().showText(quantCrab + " Crabs e " + quantWombat  + " Wombats", 2, 2);
+
     }
 
 
