@@ -15,11 +15,5 @@ public class Lining extends Actor
      */
     public void act() 
     {
-        setLocation(getX() - 1, getY());
-        
-        if(getX() == 0) {
-            getWorld().removeObject(this);
-        }
-        
     }    
 }

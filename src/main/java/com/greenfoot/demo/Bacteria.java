@@ -11,16 +11,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bacteria extends Actor
 {
-    
-   private int speed;
-    
-   
-   /**
+    /**
      * Constructor. Nothing to do so far.
      */
     public Bacteria()
     {
-        speed = Greenfoot.getRandomNumber(3) + 1;
     }
 
     /**
@@ -28,15 +23,12 @@ public class Bacteria extends Actor
      */
     public void act() 
     {
-        setLocation(getX() - speed, getY());
+        setLocation(getX()-2, getY());
         turn(1);
         
         if (getX() == 0) 
         {
-            Bloodstream bloodstream = (Bloodstream) getWorld();
-            bloodstream.updateScore(-15);
             getWorld().removeObject(this);
-           
         }
     }
 }

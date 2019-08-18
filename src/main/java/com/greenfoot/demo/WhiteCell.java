@@ -11,19 +11,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class WhiteCell extends Actor
 {
-   
-    
-   public WhiteCell() {
-      
-   }
-   
     /**
      * Act: move up and down when cursor keys are pressed.
      */
     public void act() 
     {
         checkKeyPress();
-        checkcollision();
     }
     
     /**
@@ -39,20 +32,6 @@ public class WhiteCell extends Actor
         if (Greenfoot.isKeyDown("down")) 
         {
             setLocation(getX(), getY()+4);
-        }
-    }
-    
-    private void checkcollision() {
-        if(isTouching(Bacteria.class)) {
-            Greenfoot.playSound("slurp.wav");
-            Bloodstream bloodstream = (Bloodstream) getWorld();
-            bloodstream.updateScore(20);
-            removeTouching(Bacteria.class);
-        }
-        if(isTouching(Virus.class)) {
-           // Greenfoot.playSound("au.wav");
-            Bloodstream bloodstream = (Bloodstream) getWorld();
-            bloodstream.updateScore(-100);
         }
     }
 }

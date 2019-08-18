@@ -11,57 +11,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bloodstream extends World
 {
-    
-    private int score;
-    private int timeRemaining;
 
     /**
-     * Constructor: Set up the staring objects.
+     * Constructor: Set up the starting objects.
      */
     public Bloodstream()
     {    
         super(780, 360, 1); 
 
         prepare();
-        score = 0;
-        timeRemaining = 2000;
-        showMessage();
-        showTime();
-    }
-    
-    private void showTime() {
-        showText("Time Remaining: " + timeRemaining, 550, 25); 
-    }
-    
-    private void countTime() {
-        timeRemaining = timeRemaining - 1;
-        showTime();
-        if(timeRemaining == 0) {
-            showEndMessage();
-        }
-    }
-    
-    private void showEndMessage() {
-         showText("You Win: " + score, 300, 300);
-         Greenfoot.stop();
     }
 
-    private void showMessage() {
-       showText("Score: " + score, 73, 25); 
-    }
-    
-    public void updateScore(int amount)
-    {
-        score = score + amount;
-        showMessage();
-        if (score < 0)
-        {
-          Greenfoot.playSound("game-over.wav");
-          Greenfoot.stop();
-        }
-        
-    }
-    
     /**
      * Create new floating objects at irregular intervals.
      */
@@ -71,23 +31,6 @@ public class Bloodstream extends World
         {
             addObject(new Bacteria(), 779, Greenfoot.getRandomNumber(360));
         }
-        if (Greenfoot.getRandomNumber(100) < 1)
-        {
-            addObject(new Lining(), 779, 1);
-        }
-        if (Greenfoot.getRandomNumber(100) < 1)
-        {
-            addObject(new Lining(), 779, 359);
-        }
-        if (Greenfoot.getRandomNumber(100) < 1)
-        {
-            addObject(new Virus(), 779, Greenfoot.getRandomNumber(360));
-        }
-        if (Greenfoot.getRandomNumber(100) < 6)
-        {
-            addObject(new RedCell(), 779, Greenfoot.getRandomNumber(360));
-        }
-        countTime();
     }
     
     /**
@@ -97,7 +40,7 @@ public class Bloodstream extends World
     private void prepare()
     {
         WhiteCell whitecell = new WhiteCell();
-        addObject(whitecell, 90, 179);
+        addObject(whitecell, 83, 179);
         Lining lining = new Lining();
         addObject(lining, 126, 1);
         Lining lining2 = new Lining();
@@ -109,22 +52,12 @@ public class Bloodstream extends World
         Lining lining5 = new Lining();
         addObject(lining5, 114, 359);
         Lining lining6 = new Lining();
+        addObject(lining6, 295, 353);
         Lining lining7 = new Lining();
-        addObject(lining7, 295, 353);
+        addObject(lining7, 480, 358);
         Lining lining8 = new Lining();
+        addObject(lining8, 596, 359);
         Lining lining9 = new Lining();
-        Lining lining10 = new Lining();
-        addObject(lining10, 480, 358);
-        Lining lining11 = new Lining();
-        addObject(lining11, 596, 359);
-        Lining lining12 = new Lining();
-        addObject(lining12, 740, 354);
-        
-        Border borderLeft = new Border();
-        addObject(borderLeft, 0, 180);
-        Border borderRight = new Border();
-        addObject(borderRight, 770, 180);
-        
-        setPaintOrder(Border.class);
+        addObject(lining9, 740, 354);
     }
 }
