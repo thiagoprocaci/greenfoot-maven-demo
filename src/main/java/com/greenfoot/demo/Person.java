@@ -6,6 +6,9 @@ import greenfoot.Greenfoot;
 public class Person extends Actor {
 
     int totalMoney = 0;
+    int gunReloadTime = 15;
+    int reloadDelayCount = 0;
+
 
     public Person() {
         setImage("person.gif");
@@ -15,11 +18,20 @@ public class Person extends Actor {
         checkKeyPressed();
         getMoney();
         makeDeposit();
+        fire();
         updateWorld();
+        reloadDelayCount++;
     }
 
     public void removeMoney() {
         totalMoney = 0;
+    }
+
+    private void fire() {
+        if(Greenfoot.isKeyDown("space") && reloadDelayCount > gunReloadTime) {
+            getWorld().addObject(new Bullet(), getX() + 2, getY());
+            reloadDelayCount = 0;
+        }
     }
 
     private void makeDeposit() {

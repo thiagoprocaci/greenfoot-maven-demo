@@ -4,6 +4,8 @@ import greenfoot.Actor;
 
 public class Thief extends Actor {
 
+    boolean dead = false;
+
     public Thief() {
         setImage("pengu-left.png");
         getImage().scale(getImage().getWidth() - 10, getImage().getHeight() - 10);
@@ -11,12 +13,17 @@ public class Thief extends Actor {
 
     public void act() {
         getMoney();
+        checkFireCollision();
         walk();
     }
 
     private void walk() {
-        setLocation(getX() - 3, getY());
-        if(getX() == 10) {
+        if(!dead) {
+            setLocation(getX() - 3, getY());
+            if(getX() == 10) {
+                getWorld().removeObject(this);
+            }
+        } else {
             getWorld().removeObject(this);
         }
     }
@@ -25,6 +32,14 @@ public class Thief extends Actor {
         Person person = (Person) getOneIntersectingObject(Person.class);
         if(person != null) {
             person.removeMoney();
+        }
+    }
+
+    private void checkFireCollision() {
+        Bullet bullet = (Bullet) getOneIntersectingObject(Bullet.class);
+        if(bullet != null) {
+            bullet.shotSomeone();
+            dead = true;
         }
     }
 
