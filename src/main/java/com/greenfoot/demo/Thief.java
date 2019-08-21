@@ -30,8 +30,9 @@ public class Thief extends Actor {
 
     private void getMoney() {
         Person person = (Person) getOneIntersectingObject(Person.class);
-        if(person != null) {
+        if(person != null && !dead) {
             person.removeMoney();
+            dead = true;
         }
     }
 

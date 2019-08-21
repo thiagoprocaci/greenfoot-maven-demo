@@ -8,6 +8,7 @@ public class Person extends Actor {
     int totalMoney = 0;
     int gunReloadTime = 15;
     int reloadDelayCount = 0;
+    int stolenCount = 0;
 
 
     public Person() {
@@ -25,7 +26,9 @@ public class Person extends Actor {
 
     public void removeMoney() {
         totalMoney = 0;
+        stolenCount++;
     }
+
 
     private void fire() {
         if(Greenfoot.isKeyDown("space") && reloadDelayCount > gunReloadTime) {
@@ -45,6 +48,7 @@ public class Person extends Actor {
     private void updateWorld() {
         MoneyWorld moneyWorld = (MoneyWorld) getWorld();
         moneyWorld.setPersonAmount(totalMoney);
+        moneyWorld.setStolenCount(stolenCount);
     }
 
     private void getMoney() {

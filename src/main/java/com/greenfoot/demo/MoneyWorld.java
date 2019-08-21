@@ -7,6 +7,7 @@ public class MoneyWorld extends World {
 
     int bankAmount = 0;
     int personAmount = 0;
+    int stolenCount = 0;
 
     public MoneyWorld() {
         super(560, 560, 1);
@@ -19,6 +20,16 @@ public class MoneyWorld extends World {
         addCoins();
         addThief();
         showMessage();
+        endGame();
+    }
+
+    private void endGame() {
+        if(stolenCount >= 3) {
+            Greenfoot.stop();
+        }
+        if(bankAmount >= 20) {
+            Greenfoot.stop();
+        }
     }
 
     private void addThief() {
@@ -36,6 +47,7 @@ public class MoneyWorld extends World {
     private void showMessage() {
         showText("Bank $: " + bankAmount, 150, 30);
         showText("Person $: " + personAmount, 150, 50);
+        showText("Stolen Count: " + stolenCount, 150, 80);
     }
 
     public void setBankAmount(int bankAmount) {
@@ -44,5 +56,9 @@ public class MoneyWorld extends World {
 
     public void setPersonAmount(int personAmount) {
         this.personAmount = personAmount;
+    }
+
+    public void setStolenCount(int stolenCount) {
+        this.stolenCount = stolenCount;
     }
 }
