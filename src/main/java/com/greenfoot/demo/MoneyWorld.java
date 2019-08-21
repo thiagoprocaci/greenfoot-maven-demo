@@ -3,10 +3,11 @@ package com.greenfoot.demo;
 import greenfoot.Greenfoot;
 import greenfoot.World;
 
-public class CityWorld extends World {
-    public CityWorld() {
+public class MoneyWorld extends World {
+
+    public MoneyWorld() {
         super(560, 560, 1);
-        setBackground("cell.jpg");
+        setBackground("sand.jpg");
         addObject(new Person(), getWidth()/2, getHeight() - 50);
     }
 
