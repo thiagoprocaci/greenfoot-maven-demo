@@ -7,16 +7,15 @@ import greenfoot.Greenfoot;
 
 public class Coin extends Actor {
 
-    private int valor;
+    private int value = 0;
 
     public Coin() {
-        while(valor == 0) {
-            valor = Greenfoot.getRandomNumber(5);
+        while(value == 0) {
+            value = Greenfoot.getRandomNumber(5);
         }
-        setImage("gold-ball.png");
-        int tamanho = valor * 12;
-        getImage().scale(tamanho, tamanho);
-
+        setImage("coin.png");
+        int size = value * 15;
+        getImage().scale(size, size);
     }
 
     public void act() {
@@ -27,5 +26,7 @@ public class Coin extends Actor {
         }
     }
 
-
+    public int getValue() {
+        return value;
+    }
 }
