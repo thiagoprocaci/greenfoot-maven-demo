@@ -10,6 +10,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Lining extends Actor
 {
+
+    public Lining() {
+        setImage("lining.png");
+    }
+
     /**
      * Act - nothing to do.
      */

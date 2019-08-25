@@ -11,6 +11,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class WhiteCell extends Actor
 {
+    public WhiteCell() {
+        setImage("whitecell.png");
+    }
+
     /**
      * Act: move up and down when cursor keys are pressed.
      */

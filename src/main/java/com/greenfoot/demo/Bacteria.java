@@ -16,6 +16,7 @@ public class Bacteria extends Actor
      */
     public Bacteria()
     {
+        setImage("bacteria.png");
     }
 
     /**
