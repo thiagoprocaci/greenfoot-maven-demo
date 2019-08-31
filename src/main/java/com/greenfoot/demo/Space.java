@@ -20,7 +20,7 @@ public class Space extends World
         // Uncomment one of the following method calls if you want the objects created automatically:
         
         //sunAndPlanet();
-        sunAndTwoPlanets();
+        //sunAndTwoPlanets();
         //sunPlanetMoon();
     }
     
