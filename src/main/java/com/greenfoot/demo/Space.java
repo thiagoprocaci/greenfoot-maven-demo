@@ -1,61 +1,60 @@
 package com.greenfoot.demo;
 
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
- * Space. The final frontier. 
+ * Space. Something for rockets to fly in.
  * 
- * @author Michael K�lling
- * @version 1.2
+ * @author Michael Kölling
+ * @version 1.1
  */
 public class Space extends World
 {
-    private String[] soundFiles = { "2c", "2d", "2e", "2f", "2g", "2a", "2b", "3c", "3d", "3e", "3f", "3g", "3a", "3b" };
-    
+    private Counter scoreCounter;
+    private int startAsteroids = 3;
+
     /**
-     * Constructor for objects of class Space.
-     * 
+     * Create the space and all objects within it.
      */
-    public Space()
-    {    
-        super(960, 620, 1);
+    public Space() 
+    {
+        super(600, 500, 1);
+        GreenfootImage background = getBackground();
+        background.setColor(Color.BLACK);
+        background.fill();
         
-        createObstacles();
-        randomBodies(5);
+        Rocket rocket = new Rocket();
+        addObject(rocket, getWidth()/2 + 100, getHeight()/2);
+        
+        addAsteroids(startAsteroids);
+        
+        scoreCounter = new Counter("Score: ");
+        addObject(scoreCounter, 60, 480);
+
+        Explosion.initializeImages();
+        ProtonWave.initializeImages();
     }
     
     /**
-     * Create a row of obstacles across the middle of our world.
+     * Add a given number of asteroids to our world. Asteroids are only added into
+     * the left half of the world.
      */
-    public void createObstacles()
+    private void addAsteroids(int count) 
     {
-        int i = 0;
-        while (i < soundFiles.length) 
+        for(int i = 0; i < count; i++) 
         {
-            addObject (new Obstacle (soundFiles[i] + ".wav"), 80 + i*60, 310);
-            i++;
+            int x = Greenfoot.getRandomNumber(getWidth()/2);
+            int y = Greenfoot.getRandomNumber(getHeight()/2);
+            addObject(new Asteroid(), x, y);
         }
     }
     
     /**
-     * Create a given number of bodies in the universe. Each body has a random initial state (size,
-     * mass, direction, speed, color, location).
+     * This method is called when the game is over to display the final score.
      */
-    public void randomBodies(int number)
+    public void gameOver() 
     {
-        while (number > 0) 
-        {
-            int size = 20 + Greenfoot.getRandomNumber(30);
-            double mass = size * 7.0;
-            int direction = Greenfoot.getRandomNumber(360);
-            double speed = Greenfoot.getRandomNumber(150) / 100.0;
-            int x = Greenfoot.getRandomNumber(getWidth());
-            int y = Greenfoot.getRandomNumber(getHeight());
-            int r =  Greenfoot.getRandomNumber(255);
-            int g =  Greenfoot.getRandomNumber(255);
-            int b =  Greenfoot.getRandomNumber(255);
-            addObject (new Body (size, mass, new Vector(direction, speed), new Color(r, g, b)), x, y);
-            number--;
-        }
+        // TODO: show the score board here. Currently missing.
     }
+
 }

@@ -5,9 +5,9 @@ package com.greenfoot.demo;
  * (as an x,y-offset pair) or in polar coordinates (as a direction and a length).
  * 
  * @author Poul Henriksen
- * @author Michael K�lling
+ * @author Michael Kölling
  * 
- * @version 2.1
+ * @version 2.2
  */
 public final class Vector
 {
@@ -160,4 +160,17 @@ public final class Vector
         dx = length * Math.cos(Math.toRadians(direction));
         dy = length * Math.sin(Math.toRadians(direction));   
     }
+    
+    /**
+     * Return a copy of this vector.
+     */
+    public Vector copy()
+    {
+        Vector copy = new Vector();
+        copy.dx = dx;
+        copy.dy = dy;
+        copy.direction = direction;
+        copy.length = length;
+        return copy;
+    }    
 }
