@@ -1,21 +1,21 @@
 package com.greenfoot.demo;
 
-import greenfoot.*;
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
- * A 'Body' is any kind of object in space that has a mass. It could be 
- * a star, or a planet, or anything else that floats around in space.
+ * A 'Body' is any kind of object in space that has a mass. It could be a star, or a planet, 
+ * or anything else that floats around in space.
  * 
- * @author Michael Kölling 
- * @version 0.2
+ * @author Michael K�lling 
+ *   (Including improvements by J. Buhl.)
+ * @version 1.3
  */
 public class Body extends SmoothMover
 {
-    // constants
-    private static final double GRAVITY = 5.8;
+    private static final double GRAVITY = 7.8;
     private static final Color defaultColor = new Color(255, 216, 0);
     
-    // fields
     private double mass;
     
     /**
@@ -23,7 +23,7 @@ public class Body extends SmoothMover
      */
     public Body()
     {
-        this (20, 300, new Vector(0, 1.0), defaultColor);
+        this (20, 300, new Vector(0, 0.0), defaultColor);
     }
     
     /**
@@ -45,8 +45,64 @@ public class Body extends SmoothMover
      */
     public void act() 
     {
-        // To be done - not yet implemented
+        applyForces();
         move();
+        bounceAtEdge();
+    }
+    
+    /**
+     * Check whether we have hit the edge of the universe. If so, bounce off it.
+     */
+    private void bounceAtEdge()
+    {
+        if (getX() == 0 || getX() == getWorld().getWidth()-1) {
+            setLocation((double)getX(), (double)getY());
+            invertHorizontalVelocity();
+            accelerate(0.9);
+        }
+        else if (getY() == 0 || getY() == getWorld().getHeight()-1) {
+            setLocation((double)getX(), (double)getY());
+            invertVerticalVelocity();
+            accelerate(0.9);
+        }
+    }
+    
+    /**
+     * Apply the forces of gravity from all other celestial bodies in this universe.
+     */
+    private void applyForces()
+    {
+        List<Body> bodies = getWorld().getObjects(Body.class);
+        
+        for (Body body : bodies) 
+        {
+            if (body != this) 
+            {
+                applyGravity(body);
+            }
+        }
+        
+        // ensure that we don't get too fast: If the current speed is very fast, decelerate a bit.
+        if (getSpeed() > 7) 
+        {
+            accelerate (0.9);  // acceleration with factor < 1 is actually slowing down.
+        }
+    }
+    
+    /**
+     * Apply the force of gravity of a given body to this one.
+     * (Force is applied for one time unit; dt==1.)
+     */
+    private void applyGravity(Body other)
+    {
+        double dx = other.getExactX() - this.getExactX();
+        double dy = other.getExactY() - this.getExactY();
+        Vector dv = new Vector (dx, dy); //sets direction correctly; length still invalid
+        double distance = Math.sqrt (dx*dx + dy*dy);
+        double force = GRAVITY * this.mass * other.mass / (distance * distance);
+        double acceleration = force / this.mass;
+        dv.setLength (acceleration);
+        addToVelocity (dv);
     }
     
     /**

@@ -5,63 +5,57 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Space. The final frontier. 
  * 
- * @author Michael Kölling
- * @version 1.0
+ * @author Michael K�lling
+ * @version 1.2
  */
 public class Space extends World
 {
+    private String[] soundFiles = { "2c", "2d", "2e", "2f", "2g", "2a", "2b", "3c", "3d", "3e", "3f", "3g", "3a", "3b" };
+    
     /**
-     * Create space.
+     * Constructor for objects of class Space.
+     * 
      */
     public Space()
     {    
         super(960, 620, 1);
         
-        // Uncomment one of the following method calls if you want the objects created automatically:
-        
-        //sunAndPlanet();
-        //sunAndTwoPlanets();
-        //sunPlanetMoon();
+        createObstacles();
+        randomBodies(5);
     }
     
     /**
-     * Set up the universe with a sun and a planet.
+     * Create a row of obstacles across the middle of our world.
      */
-    public void sunAndPlanet()
+    public void createObstacles()
     {
-        removeAllObjects();
-        addObject (new Body (50, 240.0, new Vector(270, 0.03), new Color(255, 216, 0)), 460, 270);
-        addObject (new Body (20, 4.2, new Vector(90, 2.2), new Color(0, 124, 196)), 695, 260);
+        int i = 0;
+        while (i < soundFiles.length) 
+        {
+            addObject (new Obstacle (soundFiles[i] + ".wav"), 80 + i*60, 310);
+            i++;
+        }
     }
-
+    
     /**
-     * Set up the universe with a sun and two planets.
+     * Create a given number of bodies in the universe. Each body has a random initial state (size,
+     * mass, direction, speed, color, location).
      */
-    public void sunAndTwoPlanets()
+    public void randomBodies(int number)
     {
-        removeAllObjects();
-        addObject (new Body (50, 240.0, new Vector(270, 0.0), new Color(255, 216, 0)), 460, 310);
-        addObject (new Body (20, 4.2, new Vector(90, 2.2), new Color(0, 124, 196)), 695, 300);
-        addObject (new Body (24, 4.6, new Vector(270, 1.8), new Color(248, 160, 86)), 180, 290);
+        while (number > 0) 
+        {
+            int size = 20 + Greenfoot.getRandomNumber(30);
+            double mass = size * 7.0;
+            int direction = Greenfoot.getRandomNumber(360);
+            double speed = Greenfoot.getRandomNumber(150) / 100.0;
+            int x = Greenfoot.getRandomNumber(getWidth());
+            int y = Greenfoot.getRandomNumber(getHeight());
+            int r =  Greenfoot.getRandomNumber(255);
+            int g =  Greenfoot.getRandomNumber(255);
+            int b =  Greenfoot.getRandomNumber(255);
+            addObject (new Body (size, mass, new Vector(direction, speed), new Color(r, g, b)), x, y);
+            number--;
+        }
     }
-
-    /**
-     * Set up the universe with a sun, a planet, and a moon.
-     */
-    public void sunPlanetMoon()
-    {
-        removeAllObjects();
-        addObject (new Body (50, 240.0, new Vector(270, 0.0), new Color(255, 216, 0)), 460, 270);
-        addObject (new Body (20, 4.2, new Vector(90, 2.2), new Color(0, 124, 196)), 720, 260);
-        addObject (new Body (5, 0.8, new Vector(90, 3.25), new Color(240, 220, 96)), 748, 260);
-    }
-
-    /**
-     * Remove all objects currently in the world.
-     */
-    private void removeAllObjects()
-    {
-        removeObjects (getObjects(Actor.class));
-    }
-
 }

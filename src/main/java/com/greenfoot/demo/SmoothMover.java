@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, and Greenfoot)
  * instead of ints). It also maintains a current velocity in form of a velocity vector.
  * 
  * @author Poul Henriksen
- * @author Michael Kölling
+ * @author Michael K�lling
  *   (Including improvements suggested by J. Buhl.)
  *      
  * @version 2.2
@@ -28,7 +28,7 @@ public abstract class SmoothMover extends Actor
     }
     
     /**
-     * Create new thing initialised with given speed.
+     * Create new Mover initialised with given velocity.
      */
     public SmoothMover(Vector velocity)
     {
@@ -98,7 +98,8 @@ public abstract class SmoothMover extends Actor
     public void accelerate(double factor)
     {
         velocity.scale(factor);
-        if (velocity.getLength() < 0.15) {
+        if (velocity.getLength() < 0.15) 
+        {
             velocity.setNeutral();
         }
     }

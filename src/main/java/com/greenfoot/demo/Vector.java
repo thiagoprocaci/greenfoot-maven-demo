@@ -5,7 +5,7 @@ package com.greenfoot.demo;
  * (as an x,y-offset pair) or in polar coordinates (as a direction and a length).
  * 
  * @author Poul Henriksen
- * @author Michael Kölling
+ * @author Michael K�lling
  * 
  * @version 2.1
  */
