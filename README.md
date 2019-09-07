@@ -1,8 +1,7 @@
 # Greenfoot with Maven - Leaves and Wombat 
 
 This project is an adaptation of the Game chapter01/leaves-and-wombat which can be found at [Greenfoot Book Scenarios website](https://www.greenfoot.org/book/material/book-scenarios.zip).
-
-However, instead of using the Greenfoot IDE, we adapt it in order to run with Maven.
+However, instead of using the Greenfoot IDE, we adapt it to run with Maven.
 
 ## Motivation
 
@@ -25,6 +24,8 @@ Also make sure, you have the following tools installed:
 - Java 8 (JDK)
 - Maven 3.x
 - IntelliJ or any Java IDE (such as NetBeans or Eclipse)
+
+See how to install Maven [here](https://www.youtube.com/watch?v=rgSESP1V9c4).
 
 
 ### Running it
