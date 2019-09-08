@@ -52,7 +52,7 @@
                     </excludes>
                     <archive>
                         <manifest>
-                            <mainClass>io.lerk.demo.DemoApp</mainClass>
+                            <mainClass>com.greenfoot.demo.Application</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -62,12 +62,10 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>io.lerk.demo.DemoApp</mainClass>
+                            <mainClass>com.greenfoot.demo.Application</mainClass>
                         </manifest>
                     </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
+                    <descriptor>${project.basedir}/src/main/resources/assembly.xml</descriptor>
                 </configuration>
                 <executions>
                     <execution>
