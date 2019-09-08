@@ -1,12 +1,13 @@
 package com.greenfoot.demo;
 
-import greenfoot.*;
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
  * A block that bounces back and forth across the screen.
  * 
  * @author Michael Kölling
- * @version 0.1
+ * @version 1.0
  */
 public class Block extends Actor
 {
@@ -19,6 +20,7 @@ public class Block extends Actor
     {
         move();
         checkEdge();
+        checkLeaf();
         checkMouseClick();
     }
     
@@ -37,7 +39,7 @@ public class Block extends Actor
     {
         if (isAtEdge()) 
         {
-            delta = -delta;  // reverse direction
+            delta = -delta;
         }
     }
     
@@ -48,8 +50,25 @@ public class Block extends Actor
     {
         if (Greenfoot.mouseClicked(null)) 
         {
-            // do this when the mouse is clicked. currently: nothing.
+            World world = getWorld();
+            List<Leaf> leaves = world.getObjects(Leaf.class);
+
+            for (Leaf leaf : leaves)
+            {
+                leaf.changeImage();
+            }
         }
     }
     
+    /**
+     * Check whether we're touching a leaf. If we are, turn it a bit.
+     */
+    private void checkLeaf()
+    {
+        Leaf leaf = (Leaf) getOneIntersectingObject(Leaf.class);
+        
+        if (leaf != null) {
+            leaf.turn(9);
+        }
+    }
 }
