@@ -1,6 +1,6 @@
 # Greenfoot with Maven - Piano 1
 
-This project is an adaptation of the Game chapter06/piano-2 which can be found at [Greenfoot Book Scenarios website](https://www.greenfoot.org/book/material/book-scenarios.zip).
+This project is an adaptation of the Game chapter06/piano-1 which can be found at [Greenfoot Book Scenarios website](https://www.greenfoot.org/book/material/book-scenarios.zip).
 However, instead of using the Greenfoot IDE, we adapt it to run with Maven.
 
 ## Motivation
