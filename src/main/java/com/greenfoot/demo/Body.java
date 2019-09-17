@@ -1,6 +1,8 @@
 package com.greenfoot.demo;
 
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -17,6 +19,8 @@ public class Body extends SmoothMover
     private static final Color defaultColor = new Color(255, 216, 0);
     
     private double mass;
+    private boolean on = false;
+    private int countTimeOn = 0;
     
     /**
      * Construct a Body with default size, mass, velocity and color.
@@ -45,9 +49,27 @@ public class Body extends SmoothMover
      */
     public void act() 
     {
+
         applyForces();
         move();
+        isAtEdgeVerification();
         bounceAtEdge();
+        crazyChange();
+    }
+
+    public void changeColor() {
+        Color c = new Color(Greenfoot.getRandomNumber(255),Greenfoot.getRandomNumber(255), Greenfoot.getRandomNumber(255));
+        int size = getImage().getWidth();
+        GreenfootImage image = new GreenfootImage (size, size);
+        image.setColor (c);
+        image.fillOval (0, 0, size-1, size-1);
+        setImage (image);
+    }
+
+    private void isAtEdgeVerification() {
+        if(isAtEdge()) {
+            changeColor();
+        }
     }
     
     /**
@@ -104,6 +126,30 @@ public class Body extends SmoothMover
         dv.setLength (acceleration);
         addToVelocity (dv);
     }
+
+
+    public void turnOn() {
+        if(!on) {
+            on = true;
+            countTimeOn = 0;
+        }
+    }
+
+    public void turnOff() {
+        if(on && countTimeOn > 100) {
+            on = false;
+            countTimeOn = 0;
+        }
+    }
+
+    public void crazyChange() {
+        if(on) {
+            changeColor();
+            countTimeOn++;
+        }
+        turnOff();
+    }
+
     
     /**
      * Return the mass of this body.

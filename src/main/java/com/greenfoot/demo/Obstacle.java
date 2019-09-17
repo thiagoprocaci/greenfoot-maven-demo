@@ -12,8 +12,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Obstacle extends Actor
 {
-    private String sound;
-    private boolean touched = false;
+    String sound;
+    boolean touched = false;
     
     /**
      * Create an obstacle with an associated sound file.
@@ -32,6 +32,7 @@ public class Obstacle extends Actor
         if (touched && body == null)   // not touched anymore
         { 
             touched = false;
+            //  setImage ("pear.png"); para fazer o exercicio 5
             setImage ("block.png");
         }
         else if (!touched && body != null)   // just being touched now

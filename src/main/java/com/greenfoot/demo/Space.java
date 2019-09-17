@@ -21,7 +21,7 @@ public class Space extends World
         super(960, 620, 1);
         
         createObstacles();
-        randomBodies(5);
+        randomBodies(Greenfoot.getRandomNumber(10) + 5);
     }
     
     /**
@@ -32,7 +32,8 @@ public class Space extends World
         int i = 0;
         while (i < soundFiles.length) 
         {
-            addObject (new Obstacle (soundFiles[i] + ".wav"), 80 + i*60, 310);
+            addObject (new Obstacle (soundFiles[i] + ".wav"), 80 + i*60, Greenfoot.getRandomNumber(310));
+            addObject (new FoodObstacle (), 80 + i*60, Greenfoot.getRandomNumber(310));
             i++;
         }
     }
@@ -41,21 +42,41 @@ public class Space extends World
      * Create a given number of bodies in the universe. Each body has a random initial state (size,
      * mass, direction, speed, color, location).
      */
-    public void randomBodies(int number)
-    {
-        while (number > 0) 
-        {
+    public void randomBodies(int number) {
+        while (number > 0) {
             int size = 20 + Greenfoot.getRandomNumber(30);
             double mass = size * 7.0;
             int direction = Greenfoot.getRandomNumber(360);
             double speed = Greenfoot.getRandomNumber(150) / 100.0;
             int x = Greenfoot.getRandomNumber(getWidth());
             int y = Greenfoot.getRandomNumber(getHeight());
-            int r =  Greenfoot.getRandomNumber(255);
-            int g =  Greenfoot.getRandomNumber(255);
-            int b =  Greenfoot.getRandomNumber(255);
-            addObject (new Body (size, mass, new Vector(direction, speed), new Color(r, g, b)), x, y);
+            int r = Greenfoot.getRandomNumber(255);
+            int g = Greenfoot.getRandomNumber(255);
+            int b = Greenfoot.getRandomNumber(255);
+            addObject(new Body(size, mass, new Vector(direction, speed), new Color(r, g, b)), x, y);
             number--;
         }
+
+
     }
+
+    public void act() {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if(mouse != null) {
+            int x = mouse.getX();
+            int y = mouse.getY();
+            if(Greenfoot.mouseClicked(this)) {
+                int size = 20 + Greenfoot.getRandomNumber(30);
+                double mass = size * 7;
+                int direction = Greenfoot.getRandomNumber(360);
+                double speed = Greenfoot.getRandomNumber(150)/100.0;
+                int r = Greenfoot.getRandomNumber(255);
+                int g = Greenfoot.getRandomNumber(255);
+                int b = Greenfoot.getRandomNumber(255);
+                addObject(new Body(size, mass, new Vector(direction, speed), new Color(r,g,b)), x, y);
+            }
+        }
+    }
+
+
 }
