@@ -34,5 +34,23 @@ public class MyWorld extends World
         }
         
         addObject(new Block(), 300, 200);
+        addApple();
+        addPear();
+    }
+
+    private void addApple() {
+        for(int i = 0 ; i < 12 ; i++) {
+            int x = Greenfoot.getRandomNumber(getWidth());
+            int y = Greenfoot.getRandomNumber(getHeight());
+            addObject( new Apple(), x, y );
+        }
+    }
+
+    private void addPear() {
+        for(int i = 0 ; i < 8 ; i++) {
+            int x = Greenfoot.getRandomNumber(getWidth());
+            int y = Greenfoot.getRandomNumber(getHeight());
+            addObject( new Pear(), x, y );
+        }
     }
 }

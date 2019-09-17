@@ -19,11 +19,30 @@ public class Block extends Actor
     public void act() 
     {
         move();
+        rotacionarObjetos();
         checkEdge();
         checkLeaf();
         checkMouseClick();
     }
-    
+
+
+    private void rotacionarObjetos() {
+        if(isAtEdge()) {
+            List<Leaf> list = getWorld().getObjects(Leaf.class);
+            for(Leaf leaf : list) {
+                leaf.turn(90);
+            }
+            List<Pear> pearList = getWorld().getObjects(Pear.class);
+            for(Pear pear : pearList) {
+                pear.move();
+            }
+            List<Apple> appleList = getWorld().getObjects(Apple.class);
+            for(Apple apple : appleList) {
+                apple.turn(90);
+            }
+        }
+    }
+
     /**
      * Move sideways, either left or right.
      */
@@ -55,7 +74,9 @@ public class Block extends Actor
 
             for (Leaf leaf : leaves)
             {
-                leaf.changeImage();
+                if(leaf.getX() < getWorld().getWidth()/2) {
+                    leaf.changeImage();
+                }
             }
         }
     }
