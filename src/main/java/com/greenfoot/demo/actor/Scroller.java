@@ -1,7 +1,7 @@
 package com.greenfoot.demo.actor;
 
 import greenfoot.Actor;
-import greenfoot.Greenfoot;
+
 
 public class Scroller extends Actor {
 
@@ -12,7 +12,7 @@ public class Scroller extends Actor {
     }
 
     public void act() {
-        scrollingMethods();
+
     }
 
     /**
@@ -20,7 +20,7 @@ public class Scroller extends Actor {
      */
     public void setLocation()
     {
-        setLocation(getX() + scrollX, getY());
+
     }
 
     /**
@@ -28,27 +28,13 @@ public class Scroller extends Actor {
      */
     public void checkKeyPress(int amount)  {
 
-        if(Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("right")) {
-            scrollX = amount;
-            if(Greenfoot.isKeyDown("z"))  {
-                scrollX = amount + 2; // world will scroll faster if z is pressed while moving
-            }
-        } else if(Greenfoot.isKeyDown("right") && !Greenfoot.isKeyDown("left"))  {
-            scrollX = -amount;
-            if(Greenfoot.isKeyDown("z"))  {
-                scrollX = -amount - 2; // world will scroll faster if z is pressed while moving
-            }
-        } else  {
-            stopScroll();
-        }
     }
 
     /**
      * add scrollingMethods to all actors that should scroll
      */
     public void scrollingMethods()  {
-        checkKeyPress(2);
-        setLocation();
+
     }
 
     public static void stopScroll() {
