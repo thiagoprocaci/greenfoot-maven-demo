@@ -12,7 +12,7 @@ public class Scroller extends Actor {
     }
 
     public void act() {
-        scrollingMethods();
+        scroll();
     }
 
     /**
@@ -44,9 +44,9 @@ public class Scroller extends Actor {
     }
 
     /**
-     * add scrollingMethods to all actors that should scroll
+     * add scroll to all actors that should scroll
      */
-    public void scrollingMethods()  {
+    public void scroll()  {
         checkKeyPress(2);
         setLocation();
     }

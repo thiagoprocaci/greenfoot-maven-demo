@@ -13,6 +13,10 @@ public class GameWorld extends World {
         addPlatform(1, 100, 585);
         addPoles(-10, 20, 15);
         addPoles(-10, 20, 2955);
+        addTreeAndBush();
+    }
+
+    private void addTreeAndBush() {
         addObject(new Tree(), 613, 500);
         addObject(new Bush(), 648, 560);
         addObject(new Bush(), 273, 555);
@@ -28,9 +32,6 @@ public class GameWorld extends World {
         addObject(new Warrior(), 65, -100);
     }
 
-    /**
-     * Add platforms starting at start and ending at end
-     */
 
     public void addPlatform(int start, int end, int y)
     {
