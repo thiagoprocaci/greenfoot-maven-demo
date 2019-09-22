@@ -1,16 +1,4 @@
 #Greenfoot project file
-class.com.greenfoot.demo.Block.image=block-light.png
-class.com.greenfoot.demo.Leaf.image=leaf-green.png
-class.com.greenfoot.demo.MyWorld.image=autumn.png
-dependency1.from=MyWorld
-dependency1.to=Leaf
-dependency1.type=UsesDependency
-dependency2.from=MyWorld
-dependency2.to=Block
-dependency2.type=UsesDependency
-dependency3.from=Block
-dependency3.to=Leaf
-dependency3.type=UsesDependency
 editor.fx.0.height=0
 editor.fx.0.width=0
 editor.fx.0.x=0
