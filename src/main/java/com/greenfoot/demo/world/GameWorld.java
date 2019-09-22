@@ -1,8 +1,6 @@
 package com.greenfoot.demo.world;
 
-import com.greenfoot.demo.actor.Platform;
-import com.greenfoot.demo.actor.Pole;
-import com.greenfoot.demo.actor.Warrior;
+import com.greenfoot.demo.actor.*;
 import greenfoot.World;
 
 public class GameWorld extends World {
@@ -15,6 +13,15 @@ public class GameWorld extends World {
         addPlatform(1, 100, 585);
         addPoles(-10, 20, 15);
         addPoles(-10, 20, 2955);
+        addObject(new Tree(), 613, 500);
+        addObject(new Bush(), 648, 560);
+        addObject(new Bush(), 273, 555);
+        addObject(new Tree(), 1883, 500);
+        addObject(new Tree(), 2303, 500);
+        addObject(new Bush(), 1923, 555);
+        addObject(new Tree(), 1003, 500);
+        addObject(new Bush(), 923, 555);
+        addObject(new Bush(), 1253, 555);
     }
 
     private void addWarrior() {

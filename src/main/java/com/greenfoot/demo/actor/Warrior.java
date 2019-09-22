@@ -29,21 +29,19 @@ public class Warrior extends Player {
     }
 
 
-    public void checkKeys()
-    {
-        if (Greenfoot.isKeyDown("right") && !(Greenfoot.isKeyDown("left")) && !isTouching(Pole.class))
-        {
+    public void checkKeys() {
+        if (Greenfoot.isKeyDown("right") && !(Greenfoot.isKeyDown("left")) ) {
             direction = RIGHT;
             runRight();
-        } else if (Greenfoot.isKeyDown("left") && !(Greenfoot.isKeyDown("right")) && !isTouching(Pole.class)) {
+        } else if (Greenfoot.isKeyDown("left") && !(Greenfoot.isKeyDown("right")) ) {
             direction = LEFT;
             runLeft();
         } else {
             stopMoving();
-            if(direction == RIGHT) {
+            if (direction == RIGHT) {
                 setImage("standing.gif");
             }
-            if(direction == LEFT) {
+            if (direction == LEFT) {
                 setImage("standingleft.gif");
             }
         }
@@ -57,17 +55,16 @@ public class Warrior extends Player {
     /**
      * Run to the right.
      */
-    public void runRight()
-    {
+    public void runRight() {
         setVelocityX(runSpeed);
         imageCount++;
-        if(imageCount <= 1){
+        if (imageCount <= 1) {
             setImage("run3.gif");
         }
-        if(imageCount == 11){
+        if (imageCount == 11) {
             setImage("run1.gif");
         }
-        if(imageCount == 21){
+        if (imageCount == 21) {
             setImage("run3.gif");
             imageCount = 0;
         }
@@ -76,17 +73,16 @@ public class Warrior extends Player {
     /**
      * Run to the left.
      */
-    public void runLeft()
-    {
+    public void runLeft() {
         setVelocityX(-runSpeed);
         imageCount++;
-        if(imageCount <= 1){
+        if (imageCount <= 1) {
             setImage("run3left.gif");
         }
-        if(imageCount == 11){
+        if (imageCount == 11) {
             setImage("run1left.gif");
         }
-        if(imageCount == 21){
+        if (imageCount == 21) {
             setImage("run3left.gif");
             imageCount = 0;
         }
@@ -95,17 +91,15 @@ public class Warrior extends Player {
     /**
      * Stop moving.
      */
-    public void stopMoving()
-    {
+    public void stopMoving() {
         setVelocityX(0.0);
     }
+
     /**
      * Perform a jump.
      */
-    public void jump()
-    {
-        if (canJump)
-        {
+    public void jump() {
+        if (canJump) {
             setVelocityY(-jumpForce);
             canJump = false;
         }
@@ -114,8 +108,7 @@ public class Warrior extends Player {
     /**
      * Check for vertical collisions and adjust jumping or falling.
      */
-    private void manageJumping()
-    {
+    private void manageJumping() {
         // Calculate distance sprite will move vertically
         double velocityY = getVelocityY();
         int lookY;
@@ -130,11 +123,10 @@ public class Warrior extends Player {
             // No collision this cycle
             applyGravity();
             canJump = false; // in case of falling off an edge
-        } else  {
+        } else {
             // Collision detected
             moveToContactVertical(tile);
-            if (velocityY > 0)
-            {
+            if (velocityY > 0) {
                 // Player has landed
                 canJump = true;
             }
@@ -145,8 +137,7 @@ public class Warrior extends Player {
     /**
      * Apply gravity when the sprite is jumping or falling.
      */
-    public void applyGravity()
-    {
+    public void applyGravity() {
         double velocityY = getVelocityY() + GRAVITY; // add gravity
         if (velocityY > MAX_VEL) {
             velocityY = MAX_VEL; // limit velocity
@@ -159,14 +150,13 @@ public class Warrior extends Player {
      *
      * @param target The target this sprite is approaching.
      */
-    public void moveToContactVertical(Actor target)
-    {
+    public void moveToContactVertical(Actor target) {
         int h2 = (target.getImage().getHeight() + getImage().getHeight()) / 2;
         int newY;
 
-        if (target.getY() > getY())  {
+        if (target.getY() > getY()) {
             newY = target.getY() - h2;
-        }  else  {
+        } else {
             newY = target.getY() + h2;
         }
         setLocation(getX(), newY);
@@ -197,10 +187,9 @@ public class Warrior extends Player {
      *
      * @param target The target this sprite is approaching.
      */
-    private void moveToContactHorizontal(Actor target)
-    {
+    private void moveToContactHorizontal(Actor target) {
         int w2 = (getWidth() + target.getImage().getWidth()) / 1;
-        int newX ;
+        int newX;
         if (target.getX() > getX()) {
             newX = target.getX() - w2;
         } else {
