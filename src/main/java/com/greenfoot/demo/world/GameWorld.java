@@ -14,6 +14,13 @@ public class GameWorld extends World {
         addPoles(-10, 20, 15);
         addPoles(-10, 20, 2955);
         addTreeAndBush();
+        addLift();
+    }
+
+    private void addLift() {
+        addObject(new Lift(500, 150), 500, 555);
+        addObject(new Lift(500, 150), 530, 555);
+        addObject(new Lift(500, 150), 560, 555);
     }
 
     private void addTreeAndBush() {
