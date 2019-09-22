@@ -1,6 +1,6 @@
-# Greenfoot with Maven - Autumn 2 
+# Greenfoot with Maven - Plataformer
 
-This project is an adaptation of the Game chapter07/autumn-2 which can be found at [Greenfoot Book Scenarios website](https://www.greenfoot.org/book/material/book-scenarios.zip).
+This project is an adaptation of the Game plataformer.
 However, instead of using the Greenfoot IDE, we adapt it to run with Maven.
 
 ## Motivation
