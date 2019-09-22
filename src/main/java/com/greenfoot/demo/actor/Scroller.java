@@ -33,7 +33,7 @@ public class Scroller extends Actor {
     /**
      * add scrollingMethods to all actors that should scroll
      */
-    public void scrollingMethods()  {
+    public void scroll()  {
 
     }
 
